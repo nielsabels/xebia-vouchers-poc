@@ -10,7 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Swashbuckle.AspNetCore.Swagger;
+using Xebia.Vouchers.API.Utils;
 
 namespace Xebia.Vouchers.API
 {
@@ -26,12 +29,18 @@ namespace Xebia.Vouchers.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services
+                .AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Xebia Vouchers API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Xebia Vouchers API", Version = "v1" });
+                c.DescribeAllEnumsAsStrings();
             });
+            
+            
+            DependencyRegistration.Register(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
