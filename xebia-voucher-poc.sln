@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xebia.Vouchers.API", "Xebia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xebia.Vouchers", "Xebia.Vouchers\Xebia.Vouchers.csproj", "{861C5AEC-0157-4D38-8C7E-3F0882B7FA5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xebia.Vouchers.Tests.Unit", "Xebia.Vouchers.Tests.Unit\Xebia.Vouchers.Tests.Unit.csproj", "{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{861C5AEC-0157-4D38-8C7E-3F0882B7FA5B}.Release|x64.Build.0 = Release|Any CPU
 		{861C5AEC-0157-4D38-8C7E-3F0882B7FA5B}.Release|x86.ActiveCfg = Release|Any CPU
 		{861C5AEC-0157-4D38-8C7E-3F0882B7FA5B}.Release|x86.Build.0 = Release|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Debug|x64.Build.0 = Debug|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Debug|x86.Build.0 = Debug|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Release|x64.ActiveCfg = Release|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Release|x64.Build.0 = Release|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Release|x86.ActiveCfg = Release|Any CPU
+		{C51E4F84-42F6-41CF-B53B-7FB1E8DFAA50}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
