@@ -6,9 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.10.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Xebia.Vouchers.Adapter.InMemoryVouchers\Xebia.Vouchers.Adapter.InMemoryVouchers.csproj" />
+    <ProjectReference Include="..\Xebia.Vouchers\Xebia.Vouchers.csproj" />
   </ItemGroup>
 
 </Project>
