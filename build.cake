@@ -178,9 +178,9 @@ Task("Test-Local")
     .IsDependentOn("Publish")
     .IsDependentOn("Create-Container")
     .IsDependentOn("Start-Container")
+    .IsDependentOn("Test-Acceptance")
     .IsDependentOn("Stop-Container")
     .IsDependentOn("Remove-Container")
-    .IsDependentOn("Test-Acceptance")
     .IsDependentOn("Remove-Container-Image");
 
 Task("Default")
