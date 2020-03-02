@@ -49,12 +49,12 @@ namespace Xebia.Vouchers.API.Controllers
             try
             {
                 var newVoucherDto = NewVoucherDto.FromDomain(_createVoucherUseCase.Create(voucherType));
+                _logger.Information("Voucher {voucherId} successfully created", newVoucherDto.Id);                
                 return StatusCode((int) HttpStatusCode.Created, newVoucherDto);
             }
             catch (Exception e)
             {
-                _logger.Error(e, "Unable to create a voucher code.");
-                
+                _logger.Error(e, "Generic exception occurred while creating voucher {voucherType}", voucherTypeDto.VoucherType);
                 return StatusCode((int)HttpStatusCode.InternalServerError, "Could not create a voucher code.");
             }
         }
@@ -78,22 +78,27 @@ namespace Xebia.Vouchers.API.Controllers
             try
             {
                 var claimedVoucherDto = ClaimedVoucherDto.FromDomain(_claimVoucherUseCase.Claim(voucherId));
+                _logger.Information("Voucher {voucherId} successfully claimed", voucherId);
                 return Ok(claimedVoucherDto);
             }
             catch (VoucherAlreadyClaimed e)
             {
+                _logger.Warning(e, "Voucher {voucherId} has already been claimed", voucherId);
                 return StatusCode((int) HttpStatusCode.Forbidden, e.Message);
             }
             catch (VoucherDoesNotExist e)
             {
+                _logger.Warning(e, "Voucher {voucherId} does not exist", voucherId);
                 return NotFound(e.Message);
             }
             catch (CouldNotClaimVoucher e)
             {
+                _logger.Warning(e, "Voucher {voucherId} could not be claimed", voucherId);
                 return StatusCode((int) HttpStatusCode.InternalServerError, e.Message);
             }
             catch (Exception e)
             {
+                _logger.Error(e, "Generic exception occurred while claiming voucher {voucherId}", voucherId);
                 return StatusCode((int) HttpStatusCode.InternalServerError, e.Message);
             }
         }        

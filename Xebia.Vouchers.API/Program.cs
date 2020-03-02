@@ -20,6 +20,7 @@ namespace Xebia.Vouchers.API
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
+                .WriteTo.Seq("http://localhost:5341")
                 .WriteTo.Console()
                 .CreateLogger();
 
@@ -42,7 +43,8 @@ namespace Xebia.Vouchers.API
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .UseSerilog();
+                .UseStartup<Startup>();
+                
+        // Use extension method .UseSerilog(); to pipe request/response logging to Serilog
     }
 }
