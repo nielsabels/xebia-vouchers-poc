@@ -22,4 +22,11 @@
     <ProjectReference Include="..\Xebia.Vouchers\Xebia.Vouchers.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Dockerfile" />
+    <Content Include="Dockerfile">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
