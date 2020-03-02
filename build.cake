@@ -112,19 +112,18 @@ Task("Start-Container")
 	.Does(() => 
     {
         Information("Starting the container '{0}'.", dockerImageName);
-        dockerContainerId = DockerCreate(new DockerContainerCreateSettings() { Name = dockerContainerName}, dockerImageName, "");
-        Information("Container '{0}' started ({1}).", dockerImageName, dockerContainerId);
+        dockerContainerId = DockerRun(new DockerContainerRunSettings() { Detach = true, Publish = new [] { "8080:80" } }, dockerImageName, "-d");
+        Information("Container '{0}' started.", dockerImageName);
     });
 
 Task("Stop-Container")
-	.Description("Starts a Docker container for the Vouchers API.")
+	.Description("Stops a Docker container for the Vouchers API.")
 	.Does(() => 
     {
         Information("Stopping the container '{0} ({1})'.", dockerImageName, dockerContainerId);
         DockerStop(new DockerContainerStopSettings(), new[] {dockerContainerId});
         Information("Container '{0}' stopped.", dockerImageName);
     });
-
 
 Task("Remove-Container")
 	.Description("Removes the Docker container image.")
@@ -177,16 +176,11 @@ Task("Test-Local")
     .IsDependentOn("Build")
     .IsDependentOn("Test-Unit")
     .IsDependentOn("Publish")
-    // .IsDependentOn("Pack")
-    // .IsDependentOn("Deploy-Local")
     .IsDependentOn("Create-Container")
     .IsDependentOn("Start-Container")
     .IsDependentOn("Stop-Container")
     .IsDependentOn("Remove-Container")
-    
-    // .IsDependentOn("Create-Network")
     .IsDependentOn("Test-Acceptance")
-    // .IsDependentOn("Remove-Network")
     .IsDependentOn("Remove-Container-Image");
 
 Task("Default")
