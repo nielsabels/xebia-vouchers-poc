@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,7 +15,6 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Swashbuckle.AspNetCore.Swagger;
-using Xebia.Vouchers.API.Utils;
 
 namespace Xebia.Vouchers.API
 {
@@ -37,8 +38,11 @@ namespace Xebia.Vouchers.API
             {
                 c.SwaggerDoc("v1", new Info { Title = "Xebia Vouchers API", Version = "v1" });
                 c.DescribeAllEnumsAsStrings();
+                
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);                
             });
-            
             
             DependencyRegistration.Register(services);
         }
