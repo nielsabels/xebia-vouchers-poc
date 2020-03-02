@@ -7,11 +7,13 @@ namespace Xebia.Vouchers.Adapter.VoucherPersistence.InMemory
     {
         public Guid Id { get; }
         public VoucherType VoucherType { get; }
+        public bool Claimed { get; set; }
 
         public VoucherDto(VoucherType voucherType)
         {
             VoucherType = voucherType;
             Id = Guid.NewGuid();
+            Claimed = false;
         }
     }
 }
