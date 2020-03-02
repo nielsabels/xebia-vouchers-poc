@@ -113,7 +113,7 @@ Task("Start-Container")
     {
         Information("Starting the container '{0}'.", dockerImageName);
         dockerContainerId = DockerRun(new DockerContainerRunSettings() { Detach = true, Publish = new [] { "8080:80" } }, dockerImageName, "-d");
-        Information("Container '{0}' started.", dockerImageName);
+        Information("Container '{0}' started ({1}).", dockerImageName, dockerContainerId);
     });
 
 Task("Stop-Container")

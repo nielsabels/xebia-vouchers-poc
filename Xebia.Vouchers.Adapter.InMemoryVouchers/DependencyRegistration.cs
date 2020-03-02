@@ -6,8 +6,9 @@ namespace Xebia.Vouchers.Adapter.VoucherPersistence.InMemory
     {
         public static void Register(IServiceCollection services)
         {
-            services.AddSingleton<ICreateVouchers, VoucherRepository>();
-            services.AddSingleton<IClaimVouchers, VoucherRepository>();
+            var voucherRepository = new VoucherRepository();
+            services.AddSingleton<ICreateVouchers>(voucherRepository);
+            services.AddSingleton<IClaimVouchers>(voucherRepository);
         }
     }
 }

@@ -9,6 +9,8 @@ namespace Xebia.Vouchers.API
         internal static void Register(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<CreateVoucherUseCase>();
+            serviceCollection.AddSingleton<ClaimVoucherUseCase>();
+
             serviceCollection.AddSingleton(Log.Logger);
             
             Xebia.Vouchers.Adapter.VoucherPersistence.InMemory.DependencyRegistration.Register(serviceCollection);
